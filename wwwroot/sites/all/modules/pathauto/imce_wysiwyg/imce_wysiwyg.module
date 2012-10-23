@@ -1,0 +1,68 @@
+<?php
+// $Id: imce_wysiwyg.module,v 1.3 2009/02/25 16:31:55 aaronhawkins Exp $
+
+/**
+ * @file
+ * Makes IMCE available as plugin for client-side editors integrated via
+ * Wysiwyg API.
+ */
+
+/**
+ * Implementation of hook_wysiwyg_plugin().
+ */
+function imce_wysiwyg_plugin($editor, $version) {
+  static $integrated = array();
+
+  if (!imce_access()) {
+    return;
+  }
+  // Load our invocation scripts.
+  if (empty($integrated)) {
+    $imcepath = drupal_get_path('module', 'imce');
+    $path = drupal_get_path('module', 'imce_wysiwyg');
+    drupal_add_js($imcepath . '/js/imce.js');
+    drupal_add_js($imcepath . '/js/imce_set_app.js');
+    drupal_add_js($path . '/js/imce_wysiwyg.js');
+  }
+
+  switch ($editor) {
+    case 'tinymce':
+      if (!isset($integrated[$editor])) {
+        $integrated[$editor] = TRUE;
+        $settings = array(
+          'imce' => array('url' => url('imce', array('query' => array('app' => $editor.'|url@')))),
+        );
+        drupal_add_js($settings, 'setting');
+      }
+      return array(
+        'imce' => array(
+          'extensions' => array('imce' => t('IMCE')),
+          'url' => 'http://drupal.org/project/imce',
+          'options' => array(
+            'file_browser_callback' => 'imceImageBrowser',
+            'inline_styles' => TRUE,
+          ),
+          'load' => FALSE,
+        ),
+      );
+
+    case 'fckeditor':
+      $integrated[$editor] = TRUE;
+      return array(
+        'imce' => array(
+          'extensions' => array('imce' => t('IMCE')),
+          'url' => 'http://drupal.org/project/imce',
+          'options' => array(
+            'LinkBrowser' => TRUE,
+            'LinkBrowserURL' => url('imce', array('query' => 'app=' . $editor . '|url@txtUrl')),
+            'ImageBrowser' => TRUE,
+            'ImageBrowserURL' => url('imce', array('query' => 'app=' . $editor . '|url@txtUrl|width@txtWidth|height@txtHeight')),
+            'FlashBrowser' => TRUE,
+            'FlashBrowserURL' => url('imce', array('query' => 'app=' . $editor . '|url@txtUrl')),
+          ),
+          'load' => FALSE,
+        ),
+      );
+  }
+}
+

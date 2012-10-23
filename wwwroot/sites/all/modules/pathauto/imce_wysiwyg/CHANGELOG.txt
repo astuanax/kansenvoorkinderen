@@ -1,0 +1,16 @@
+// $Id: CHANGELOG.txt,v 1.1 2009/02/23 12:49:16 sun Exp $
+
+IMCE Wysiwyg x.x-x.x, xxxx-xx-xx
+--------------------------------
+
+
+IMCE Wysiwyg 6.x-1.x, xxxx-xx-xx
+--------------------------------
+
+
+IMCE Wysiwyg 6.x-1.0, 2009-02-23
+--------------------------------
+#380944 by sun: Added documentation; code clean-up.
+#287025 by sun: Added Wysiwyg API integration code for IMCE.
+
+

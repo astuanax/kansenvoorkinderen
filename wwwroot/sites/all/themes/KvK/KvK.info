@@ -1,0 +1,17 @@
+; $Id: KvK.info,v 1.5 2007/07/01 23:27:32 goba Exp $
+name = KvK
+description = Tableless, recolorable, multi-column, fluid width theme (default).
+version = VERSION
+core = 6.x
+engine = phptemplate
+stylesheets[all][] = style.css
+stylesheets[all][] = reset-fonts-grids.css
+stylesheets[print][] = print.css
+regions[navigation_block] = navigation_block
+regions[jobposting_block] = jobposting_block
+
+; Information added by drupal.org packaging script on 2009-02-25
+version = "6.10"
+project = "drupal"
+datestamp = "1235596218"
+
