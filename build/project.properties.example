@@ -1,0 +1,5 @@
+prod.ftpserver=ftpserver
+prod.userid=userid
+prod.pass=pass
+prod.remotedir=remotedir
+prod.localdir=localdir

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project name="KvK" default="ziptheme" basedir=".">
+    <description>
+        Copy and move to site
+    </description>
+    <!-- set global properties for this build -->
+    <property file="project.properties" />
+    <target name="ftp2server">
+        <echo message="##########################"/>
+        <echo message="# Connecting to ${prod.ftpserver}"/>
+        <echo message="# Uploading files in ${prod.localdir}"/>
+        <echo message="##########################"/>
+
+        <ftp server="${prod.ftpserver}" port="21" remotedir="${prod.remotedir}" userid="${prod.userid}" password="${prod.pass}" depends="yes" passive="yes" binary="yes">
+            <fileset dir="${prod.localdir}"/>
+        </ftp>
+        <echo message="##########################"/>
+    </target>
+    <target name="theme2server">
+        <echo message="##########################"/>
+        <echo message="# Connecting to ${prod.ftpserver}"/>
+        <echo message="# Uploading files in ${prod.localdir}/sites/all/themes/KvK"/>
+        <echo message="##########################"/>
+        <ftp server="${prod.ftpserver}" port="21" remotedir="${prod.remotedir}/sites/all/themes/KvK" userid="${prod.userid}" password="${prod.pass}" depends="no" passive="yes" binary="yes">
+            <fileset dir="${prod.localdir}/sites/all/themes/KvK"/>
+        </ftp>
+        <echo message="##########################"/>
+    </target>
+    <target name="ziptheme" depends="ftp2server">
+                <echo message="##########################"/>
+                        <echo message="# Zip the rootfolder in release ${project-name}_${build.number}"/>
+                        <echo message="##########################"/>
+        <buildnumber file="build.number"/>
+        <zip destfile="../${project-name}_${build.number}.zip" basedir="${prod.localdir}"/>
+    </target>
+</project>

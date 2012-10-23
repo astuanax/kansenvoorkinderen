@@ -1,0 +1,12 @@
+body table table table, table{font-size:90%;font-family:Verdana;line-height:1.5454545454545454em;margin:0;padding:0}
+h1{margin:0;font-size:1.7272727272727273em;line-height:0.8947368421052632em;margin-bottom:0.8947368421052632em;}
+h2{margin:0;font-size:1.5454545454545454em;line-height:1em;margin-bottom:1em;}
+h3{margin:0;font-size:1.3636363636363635em;line-height:1.1333333333333333em;margin-bottom:1.1333333333333333em;}
+h4{margin:0;font-size:1.1818181818181819em;line-height:1.3076923076923077em;margin-bottom:1.3076923076923077em;}
+p,ul,blockquote,pre,td,th,label{margin:0;font-size:1em;line-height:1.5454545454545454em;margin-bottom:1.5454545454545454em;}
+p.small{margin:0;font-size:0.8181818181818182em;line-height:1.8888888888888888em;margin-bottom:1.8888888888888888em;}
+table{border-collapse:collapse;margin-bottom:1.5454545454545454em;}
+.download{ background: url(//images/icon/report_go.png) no-repeat;padding-left: 18px;}
+.archive{font-size:85%; color: #666;}
+.archive a{color: #666;}
+.intro{ color: #444;}
